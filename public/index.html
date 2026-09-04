@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SYNERGY EDU KIDS — School ERP &amp; Management Platform</title>
+  <meta name="description" content="Institutional School ERP for SYNERGY EDU KIDS — SIS, attendance, biometric check-in, fees, faculty & circulars." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070c18'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23f59e0b' font-family='sans-serif' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <!-- ================= LOGIN ================= -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-bg-orbs"><span></span><span></span><span></span></div>
+    <div class="login-card glass">
+      <div class="login-brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="44" height="44"><rect width="48" height="48" rx="12" fill="#f59e0b"/><path d="M24 8l3.2 6.9 7.5.7-5.6 5 1.6 7.4L24 24l-6.7 4 1.6-7.4-5.6-5 7.5-.7L24 8z" fill="#070c18"/><circle cx="24" cy="34" r="3" fill="#070c18"/></svg>
+        </div>
+        <div>
+          <h1>SYNERGY EDU KIDS</h1>
+          <p>Institutional School ERP &amp; Management Platform</p>
+        </div>
+      </div>
+
+      <div class="role-pick" role="tablist" aria-label="Choose sign-in role">
+        <button type="button" class="role-tab active" data-role-tab="owner">
+          <span class="role-tab-title">Owner Super-Admin</span>
+          <span class="role-tab-sub">Directors · full control</span>
+        </button>
+        <button type="button" class="role-tab" data-role-tab="faculty">
+          <span class="role-tab-title">Faculty / Teacher</span>
+          <span class="role-tab-sub">Attendance · check-in</span>
+        </button>
+      </div>
+
+      <form id="login-form" autocomplete="on">
+        <label class="field">
+          <span>Email address</span>
+          <input id="login-email" type="email" value="owner@synergy.edu" required placeholder="you@synergy.edu" />
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="login-pass" type="password" value="owner123" required placeholder="••••••••" />
+        </label>
+        <p id="login-error" class="form-error" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block" id="login-btn">Sign in securely</button>
+      </form>
+
+      <div class="demo-box">
+        <p class="demo-title">One-click demo accounts</p>
+        <div class="demo-btns">
+          <button type="button" class="btn btn-ghost btn-sm" data-demo="owner@synergy.edu|owner123">Owner demo</button>
+          <button type="button" class="btn btn-ghost btn-sm" data-demo="ananya.iyer@synergy.edu|teacher123">Faculty demo</button>
+        </div>
+        <p class="demo-hint">Session persists across reloads · Faculty view is restricted (no ledger edits, no record deletes)</p>
+      </div>
+    </div>
+    <p class="login-foot">Pre-K to Kindergarten · Amroli, Surat · Crafted for directors, admins &amp; teaching faculty</p>
+  </div>
+
+  <!-- ================= APP ================= -->
+  <div id="app" class="app hidden">
+    <aside id="sidebar" class="sidebar">
+      <div class="side-brand">
+        <div class="brand-mark sm" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="34" height="34"><rect width="48" height="48" rx="12" fill="#f59e0b"/><path d="M24 8l3.2 6.9 7.5.7-5.6 5 1.6 7.4L24 24l-6.7 4 1.6-7.4-5.6-5 7.5-.7L24 8z" fill="#070c18"/><circle cx="24" cy="34" r="3" fill="#070c18"/></svg>
+        </div>
+        <div class="side-brand-text">
+          <strong>SYNERGY EDU</strong>
+          <span>KIDS · ERP</span>
+        </div>
+        <button id="collapse-btn" class="icon-btn collapse-btn" title="Collapse sidebar" aria-label="Collapse sidebar"></button>
+      </div>
+
+      <p class="side-label">Manage</p>
+      <nav id="side-nav" class="side-nav" aria-label="Primary"></nav>
+
+      <div class="side-foot">
+        <div class="side-user glass-soft">
+          <div id="side-avatar" class="avatar">–</div>
+          <div class="side-user-text">
+            <strong id="side-username">–</strong>
+            <span id="side-role" class="role-pill">–</span>
+          </div>
+        </div>
+        <button id="logout-btn" class="btn btn-ghost btn-block btn-sm"></button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar glass">
+        <div class="topbar-left">
+          <button id="mobile-nav-btn" class="icon-btn only-mobile" aria-label="Open navigation"></button>
+          <div>
+            <h2 id="page-title">Dashboard</h2>
+            <p id="page-sub">—</p>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div id="live-clock" class="live-clock" title="Live IST clock">—</div>
+          <div id="top-role" class="role-pill">–</div>
+          <button id="top-logout" class="icon-btn" title="Sign out" aria-label="Sign out"></button>
+        </div>
+      </header>
+
+      <main id="view" class="view" aria-live="polite"></main>
+    </div>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toast-root" aria-live="assertive"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
